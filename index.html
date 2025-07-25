@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Explorer</title>
+    <link
+    href="https://i.pinimg.com/736x/d1/5a/86/d15a863ae3aaea3564493c2901dace28.jpg"
+    rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="astronomy.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo"><a href="">Space Explorer</a></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="astronomy.html">Astronomy</a></li>
+            <li><a href="index@mars.html">Mars Rover</a></li>
+            <li><a href="weather.html">Space Weather</a></li>
+            <li><a href="planets.html">Planets info</a></li>
+        </ul>
+        <div class="comb">
+            <li class="hamburger" onclick="showsidebar(event)"><a href=""><i class="ri-menu-3-line"></i></a></li>
+            <button class="signup">Sign Up</button>
+        </div>
+    </div>
+    <div class="sidebar" id="sidebar">
+        <li class="closebtn" onclick="hidesidebar()"><a href="#"><i class="ri-close-line"></i></a></li>
+        <div class="logo"><a href="">Space Explorer</a></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="astronomy.html">Astronomy</a></li>
+            <li><a href="index@mars.html">Mars Rover</a></li>
+            <li><a href="weather.html">Space Weather</a></li>
+            <li><a href="planets.html">Planets info</a></li>
+        </ul>
+    </div>
+
+    <div class="search-container">
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search for space images..." />
+            <button class="search-btn" onclick="performCustomSearch()">Search</button>
+        </div>
+        <div class="quick">
+            <div class="quick-search">
+            <button class="quick-btn" onclick="quickSearch('mars')">Mars</button>
+            <button class="quick-btn" onclick="quickSearch('moon')">Moon</button>
+            <button class="quick-btn" onclick="quickSearch('jupiter')">Jupiter</button>
+            <button class="quick-btn" onclick="quickSearch('nebula')">Nebula</button>
+            <button class="quick-btn" onclick="quickSearch('apollo')">Apollo</button>
+        </div>
+        </div>
+    </div>
+
+    <div class="section" id="customSection" style="display: none;">
+        <h2 class="section-title" id="customTitle">🔍 Search Results</h2>
+        <div class="gallery-container">
+            <div class="gallery" id="customResults"></div>
+            <div class="gallery-nav" style="display: flex; justify-content: center; gap: 2rem; margin-top: 1.5rem;">
+                <button class="prev-btn next-btn" onclick="loadPrevImages(document.getElementById('searchInput').value, 'customResults')">← Previous</button>
+                <button class="next-btn" onclick="loadMoreImages(document.getElementById('searchInput').value, 'customResults')">Next →</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title"> Earth</h2>
+        <div class="gallery-container">
+            <div class="gallery" id="planets">
+                <div class="loading">Loading Earth images...</div>
+            </div>
+            <div class="gallery-nav" style="display: flex; justify-content: center; gap: 2rem; margin-top: 1.5rem;">
+                <button class="prev-btn next-btn" onclick="loadPrevImages('earth', 'planets')">← Previous</button>
+                <button class="next-btn" onclick="loadMoreImages('earth', 'planets')">Next →</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title"> Galaxy</h2>
+        <div class="gallery-container">
+            <div class="gallery" id="galaxy">
+                <div class="loading">Loading Galaxy images...</div>
+            </div>
+            <div class="gallery-nav" style="display: flex; justify-content: center; gap: 2rem; margin-top: 1.5rem;">
+                <button class="prev-btn next-btn" onclick="loadPrevImages('galaxy', 'galaxy')">← Previous</button>
+                <button class="next-btn" onclick="loadMoreImages('galaxy', 'galaxy')">Next →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for image details -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle">Image Details</h2>
+                <span class="close" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <img id="modalImage" class="modal-image" src="" alt="">
+                <div class="modal-details" id="modalDetails">
+                    <!-- Details will be populated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="foot">
+          <div class="contactus">
+            <h3>Space Explorer<hr></h3>
+            <p>Contact Us: +919827404089</p>
+            <p>Alt: +919834572147</p>
+            <p><i class="ri-map-pin-line"></i>Enigma, VSSUT, Burla, Sambalpur</p>
+            <p><i class="ri-mail-send-line"></i>Email Us: support@spaceexplorer.com</p>
+          </div>
+          <div class="creators">
+            <h3>Creators<hr></h3>
+            <p>About Us</p>
+            <p>Contact Us</p>
+            <p>FAQ</p>
+            <p>Blog</p>
+          </div>
+          <div class="teammem">
+            <h3>Team Members<hr></h3>
+            <p>Bhabana Agrawal</p>
+            <p>Prateek Kumar Hota</p>
+            <p>Debasish Muduli</p>
+            <p>Rudrakant Sahoo</p>
+          </div>
+          <div class="follow">
+            <h3>Follow Us<hr></h3>
+            <p><a href="https://www.linkedin.com/company/enigma-vssut/posts/?feedView=all"><i class="ri-linkedin-box-fill"></i> Linkedin</a></p>
+            <p><a href="https://www.facebook.com/enigma.vssut?mibextid=ZbWKwL"><i class="ri-facebook-circle-fill"></i> Facebook</a></p>
+            <p><a href="https://www.instagram.com/enigma_vssut/?igsh=Z2RieWZ4bm9mdWN1#"><i class="ri-instagram-fill"></i> Instagram</a></p>
+            <p><a href="https://x.com/enigma1_vssut"><i class="ri-twitter-x-fill"></i> Twitter</a></p>
+          </div>
+        </div>
+        <div class="res">
+            <div class="end">&copy; 2025 Space Explorers. All Rights Reserved.</div>
+            <div class="terms">
+                <p><a href="">Terms and Conditions</a></p>
+                <p><a href="">Privacy Policy</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="astronomy.js"></script>
+</body>
+</html>
